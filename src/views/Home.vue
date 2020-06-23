@@ -14,6 +14,4 @@ export default {
     HelloWorld
   }
 }
-
-
 </script>
