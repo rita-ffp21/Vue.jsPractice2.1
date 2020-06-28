@@ -8,23 +8,23 @@
    <div class="question-about">
     <div>
       <p>-性別-</p>
-      <label><input type="radio" name="status" id="radioAll" >男性</label>
-      <label><input type="radio" name="status" id="radioAll" >女性</label>
+      <label><input type="radio" name="status" v-model="gender" value="男性">男性</label>
+      <label><input type="radio" name="status" v-model="gender" value="女性">女性</label>
     </div>
     <div>
       <p>-生年月日-</p>
       <div id="dates">
-       <select name="year" v-model="year" v-on:change="year">
+       <select name="year" v-model="year">
         <option v-for="(year,key) in 2020" :key="key">{{ year }}</option>
        </select>
       <label>年</label>
 
-       <select name="month"  v-model="month" v-on:change="month">
+       <select name="month" v-model="month">
         <option v-for="(month,key) in 12" :key="key">{{ month }}</option>
        </select>
       <label>月</label>
 
-       <select name="date"  v-model="date" v-on:change="day">
+       <select name="date" v-model="date">
         <option v-for="(date,key) in 31" :key="key">{{ date }}</option>
        </select>
        <label>日</label>
@@ -46,14 +46,48 @@ export default {
   },
   data: function () {
     return {
-      year: 1980,
-      month: 1,
-      day: 1,
     }
   },
-  methods: {
-
-  }
+  computed: {
+    gender: {
+      get() {
+        return this.$store.state.gender;
+      },
+      set(value) {
+        this.$store.commit("setGender",value);
+      },
+    },
+    year: {
+      get() {
+        console.log('getter called');
+        return this.$store.state.year;
+      },
+      set(year) {
+        console.log('setter called', year);
+        this.$store.state.year = year;
+      },
+    },
+    month: {
+      get() {
+        console.log('getter called');
+        return this.$store.state.month;
+      },
+      set(month) {
+        console.log('setter called', month);
+        this.$store.state.month = month;
+      },
+    },
+    date: {
+      get() {
+        console.log('getter called');
+        return this.$store.state.date;
+      },
+      set(date) {
+        console.log('setter called', date);
+        this.$store.state.date = date;
+      },
+    },
+  },
 }
 </script>
 
