@@ -9,18 +9,18 @@
   <div class="question-about">
    <div>
      <p>現在生命保険に加入されていますか？</p>
-     <label><input type="radio" name="status" value="question1-yes" v-model="page1">はい</label>
-     <label><input type="radio" name="status" value="question1-no" v-model="page1">いいえ</label>
+     <label><input type="radio" name="status" value="はい" v-model="question1">はい</label>
+     <label><input type="radio" name="status" value="いいえ" v-model="question1">いいえ</label>
    </div>
-   <div v-if="page1">
+   <div v-if="question1">
      <p>現在入院中ですか。または、最近３ヶ月以内に医師の診断・検査の結果、入院、手術を勧められたことがことがありますか？</p>
-     <label><input type="radio" name="status2" value="question2-yes" v-model="page2">はい</label>
-     <label><input type="radio" name="status2" value="question2-no" v-model="page2">いいえ</label>
+     <label><input type="radio" name="status2" value="はい" v-model="question2">はい</label>
+     <label><input type="radio" name="status2" value="いいえ" v-model="question2">いいえ</label>
    </div>
-   <div v-if="page2">
+   <div v-if="question2">
      <p>過去５年以内に、病気やけがで、手術を受けたことまたは継続して７日異常の入院をしたことがありますか？？</p>
-     <label><input type="radio" name="status3" v-model="page3">はい</label>
-     <label><input type="radio" name="status3" v-model="page3">いいえ</label>
+     <label><input type="radio" name="status3" value="はい" v-model="question3">はい</label>
+     <label><input type="radio" name="status3" value="いいえ" v-model="question3">いいえ</label>
    </div>
   </div>
   </div>
@@ -41,12 +41,33 @@ export default {
   name: 'questionnaire',
   data () {
     return{
-      page1 : false,
-      page2 : false
     }
   },
-  props: {
-    msg: String
+  computed: {
+    question1: {
+      get() {
+        return this.$store.state.question1;
+      },
+      set(value) {
+        this.$store.commit("setQuestion1",value);
+      },
+    },
+    question2: {
+      get() {
+        return this.$store.state.question2;
+      },
+      set(value) {
+        this.$store.commit("setQuestion2",value);
+      },
+    },
+    question3: {
+      get() {
+        return this.$store.state.question3;
+      },
+      set(value) {
+        this.$store.commit("setQuestion3",value);
+      },
+    },
   }
 }
 </script>

@@ -9,7 +9,7 @@
 import questionnaire from '@/components/questionnaire.vue'
 
 export default {
-  name: 'Home',
+  name: 'About',
   components: {
     questionnaire
   }

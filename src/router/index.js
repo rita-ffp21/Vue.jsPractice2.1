@@ -20,8 +20,13 @@ Vue.use(VueRouter)
     },
     {
       path: '/post',
-      name: 'post',
+      name: 'Post',
       component: () => import(/* webpackChunkName: "post" */ '../views/Post.vue')
+    },
+    {
+      path: '/Answer',
+      name: 'Answer',
+      component: () => import(/* webpackChunkName: "post" */ '../views/Answer.vue')
     }
 ]
 

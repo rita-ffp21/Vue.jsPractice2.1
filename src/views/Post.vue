@@ -8,7 +8,7 @@
     <div class="question-about">
      <p>-ご相談内容-</p>
      <p>
-      <textarea id="msg" name="user_message" rows="10" cols="110" placeholder="ここに記入して下さい"></textarea>
+      <textarea id="msg" name="user_message" rows="10" cols="110" placeholder="ここに記入して下さい" v-model="content"></textarea>
      </p>
     </div>
    </div>
@@ -18,11 +18,30 @@
       <router-link to="/about">前に戻る</router-link>
     </button>
     <button class="btn">
-      次へ
+      <router-link to="/Answer">確認画面へ</router-link>
     </button>
   </div>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'Post',
+  computed: {
+    content: {
+      get() {
+        console.log('getter called');
+        return this.$store.state.content;
+      },
+      set(content) {
+        console.log('setter called', content);
+        this.$store.state.content = content;
+      },
+    },
+  },
+
+}
+</script>
 
 <style scoped>
 input, textarea {
